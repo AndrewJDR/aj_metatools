@@ -170,11 +170,18 @@ int main(int argc, char **argv)
     String choppedLine = chop_whitespace(srcLine);
     String choppedTrimmedLine = skip_whitespace(choppedLine);
 
+    // I used to print the entire line of code prior to the identifiers/values, but I found that distracting.
+    /*
     printf("%.*s std::cout << \"%.*s //\"",
            choppedLine.size,
            choppedLine.str,
            choppedTrimmedLine.size,
            choppedTrimmedLine.str);
+   */
+
+    // An abomination, but for the moment I want this to be very easy to use in
+    // other projects where I don't have my own headers in place.
+    printf("%.*s std::cout << (strrchr(__FILE__, '\\\\') ? strrchr(__FILE__, '\\\\')+1 : (strrchr(__FILE__, '/') ? strrchr(__FILE__, '/')+1 : __FILE__)) << \":\" << __LINE__", choppedLine.size, choppedLine.str);
 
     findAndPrintIdentifiers(srcLine, &tokens, 0, 0);
 
