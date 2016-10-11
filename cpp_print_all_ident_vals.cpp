@@ -11,13 +11,17 @@ on that line without needing to do tedious typing or whip out the debugger.
 Input (you want to printf a, b and c, here!):
 int a = b + c;
 Output:
-int a = b + c; std::cout << "int a = b + c; //" << " a:" << a << " b:" << b << " c:" << c << "\n";
+int a = b + c; std::cout << " a:" << a << " b:" << b << " c:" << c << "\n";
 The output from the cout statement would then look something like:
-int a = b + c; // a:10 b:6 c:4
+a:10 b:6 c:4
 It also tries to handle more complex cases as best it can, such as (input):
 int i = someArr[nestedArr[k + 1]];
 Output:
-int i = someArr[nestedArr[k + 1]]; std::cout << "int i = someArr[nestedArr[k + 1]]; //" << " i:" << i << " k:" << k << " nestedArr[k+1]:" << nestedArr[k+1] << " someArr[nestedArr[k+1]]:" << someArr[nestedArr[k+1]] << "\n";
+int i = someArr[nestedArr[k + 1]]; std::cout << " i:" << i << " k:" << k << " nestedArr[k+1]:" << nestedArr[k+1] << " someArr[nestedArr[k+1]]:" << someArr[nestedArr[k+1]] << "\n";
+
+Note: It actually outputs the filename/line number  in the cout prior to the
+variable values, but I've kept that out of the examples above because it's a
+lot of extra code.
 ===============
 
 I then bind this in vim as follows:
